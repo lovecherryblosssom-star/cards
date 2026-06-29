@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voices of the Wild — Nature Team Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --ink:#3B3A33;
+    --muted:#7A786C;
+    --line:#E6E2D6;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--paper);
+    font-family:'Jost', sans-serif;
+    color:var(--ink);
+    padding:72px 24px 90px;
+  }
+
+  .page-head{
+    text-align:center;
+    max-width:520px;
+    margin:0 auto 56px;
+  }
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:#9C9A86;
+    margin:0 0 14px;
+    font-weight:500;
+  }
+  .page-head h1{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:2.5rem;
+    margin:0 0 14px;
+  }
+  .page-head p{
+    font-size:.95rem;
+    line-height:1.6;
+    color:var(--muted);
+    margin:0;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:24px;
+    max-width:880px;
+    margin:0 auto;
+  }
+  @media (max-width:760px){
+    .grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  }
+  @media (max-width:460px){
+    .grid{ grid-template-columns:1fr; }
+    .page-head h1{ font-size:2rem; }
+  }
+
+  .card{
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 26px rgba(58,56,46,0.08);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 34px rgba(58,56,46,0.14);
+    }
+  }
+
+  .card-head{
+    position:relative;
+    height:80px;
+    background:var(--light);
+  }
+  .badge{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:var(--deep);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.18);
+  }
+  .badge svg{ width:13px; height:13px; fill:currentColor; display:block; }
+
+  /* avatar now holds a real <img> placeholder instead of an icon */
+  .avatar{
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    margin:-37px auto 0;
+    border:4px solid #fff;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    background:var(--light);
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .card-body{
+    padding:12px 18px 22px;
+    text-align:center;
+  }
+  .name{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:1.3rem;
+    margin:10px 0 2px;
+  }
+  .role{
+    font-size:.64rem;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:var(--deep);
+    font-weight:600;
+    margin:0 0 12px;
+  }
+  .bio{
+    font-size:.8rem;
+    line-height:1.55;
+    color:var(--muted);
+    margin:0 0 16px;
+    min-height:58px;
+  }
+  .divider{
+    width:26px;
+    height:1px;
+    background:var(--line);
+    margin:0 auto 14px;
+  }
+
+  /* footer icon row — now inline SVG, no external icon font required */
+  .footer-icons{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    color:#C7C4B5;
+    transition:color .2s ease;
+  }
+  .footer-icons svg{
+    width:15px;
+    height:15px;
+    fill:currentColor;
+    display:block;
+  }
+  .card:hover .footer-icons{
+    color:var(--deep);
+  }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite sheet: every icon used in the cards is defined once here, then
+     reused below with <use href="#i-name">. No external font, no CDN, no
+     "missing glyph" boxes if you're offline. -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-leaf" viewBox="0 0 24 24">
+    <path d="M12 2c-4.5 2-8 6-8 11a8 8 0 0 0 16 0c0-5-3.5-9-8-11z"/>
+    <path d="M12 7v13" stroke="rgba(255,255,255,.5)" stroke-width="1.3" fill="none"/>
+  </symbol>
+  <symbol id="i-droplet" viewBox="0 0 24 24">
+    <path d="M12 2c4 5 7 9.5 7 13a7 7 0 1 1-14 0c0-3.5 3-8 7-13z"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.2"/>
+    <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <line x1="12" y1="2.3" x2="12" y2="5.1"/><line x1="12" y1="18.9" x2="12" y2="21.7"/>
+      <line x1="2.3" y1="12" x2="5.1" y2="12"/><line x1="18.9" y1="12" x2="21.7" y2="12"/>
+      <line x1="4.9" y1="4.9" x2="6.8" y2="6.8"/><line x1="17.2" y1="17.2" x2="19.1" y2="19.1"/>
+      <line x1="4.9" y1="19.1" x2="6.8" y2="17.2"/><line x1="17.2" y1="6.8" x2="19.1" y2="4.9"/>
+    </g>
+  </symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <path d="M2.5 8h10.5a2.5 2.5 0 1 0-2.3-3.4"/>
+      <path d="M2.5 13h14.2a2.7 2.7 0 1 1-2.4 3.9"/>
+      <path d="M2.5 18h7.5"/>
+    </g>
+  </symbol>
+  <symbol id="i-paw" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="16.2" rx="5.2" ry="4.1"/>
+    <circle cx="5.6" cy="10" r="2.1"/><circle cx="10" cy="6.3" r="2.1"/>
+    <circle cx="14" cy="6.3" r="2.1"/><circle cx="18.4" cy="10" r="2.1"/>
+  </symbol>
+  <symbol id="i-feather" viewBox="0 0 24 24">
+    <path d="M20 4c-7 0-15 5-15 14l4-4 2 2 2-2 2 2 2-2 3-3c2-3 2-6 0-7z"/>
+    <path d="M9 14l10-10" stroke="rgba(255,255,255,.45)" stroke-width="1.2" fill="none"/>
+  </symbol>
+  <symbol id="i-water" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <path d="M2.5 9.5c2-2 4-2 6 0s4 2 6 0s4-2 6.5 0"/>
+      <path d="M2.5 15.5c2-2 4-2 6 0s4 2 6 0s4-2 6.5 0"/>
+    </g>
+  </symbol>
+  <symbol id="i-cloud-sun" viewBox="0 0 24 24">
+    <circle cx="8" cy="7.3" r="2.6"/>
+    <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+      <line x1="8" y1="2.2" x2="8" y2="3.5"/><line x1="3.3" y1="7.3" x2="4.6" y2="7.3"/>
+    </g>
+    <path d="M6 20a4 4 0 0 1 .3-7.9 5.2 5.2 0 0 1 10 1.3A3.6 3.6 0 0 1 16 20H6z"/>
+  </symbol>
+  <symbol id="i-seedling" viewBox="0 0 24 24">
+    <path d="M12 21v-8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M12 13c-4.3 0-6.5-3-6.5-6.6 4.3 0 6.5 2 6.5 6.6z"/>
+    <path d="M12 10.6c4.3 0 6.5-3 6.5-6.6-4.3 0-6.5 2-6.5 6.6z"/>
+    <line x1="5" y1="21" x2="19" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-spa" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="6.8" rx="2.3" ry="4.2"/>
+    <ellipse cx="12" cy="6.8" rx="2.3" ry="4.2" transform="rotate(72 12 12)"/>
+    <ellipse cx="12" cy="6.8" rx="2.3" ry="4.2" transform="rotate(144 12 12)"/>
+    <ellipse cx="12" cy="6.8" rx="2.3" ry="4.2" transform="rotate(216 12 12)"/>
+    <ellipse cx="12" cy="6.8" rx="2.3" ry="4.2" transform="rotate(288 12 12)"/>
+    <circle cx="12" cy="12" r="1.8" fill="rgba(255,255,255,.7)"/>
+  </symbol>
+  <symbol id="i-mountain" viewBox="0 0 24 24">
+    <path d="M2.5 19.5l6.2-10 3.6 5.6 1.8-2.6 6.4 7z"/>
+  </symbol>
+  <symbol id="i-fish" viewBox="0 0 24 24">
+    <path d="M3 12c3.8-4.3 11.2-4.3 14 0-2.8 4.3-10.2 4.3-14 0z"/>
+    <path d="M17 12l4-3.4v6.8z"/>
+    <circle cx="6.6" cy="11" r=".9" fill="rgba(255,255,255,.8)"/>
+  </symbol>
+</svg>
+
+<div class="page-head">
+  <p class="eyebrow">Meet the Elements</p>
+  <h1>Voices of the Wild</h1>
+  <p>Eight quiet introductions from the forest, the sky, the stone, and the sea.</p>
+</div>
+
+<div class="grid">
+
+  <div class="card" style="--light:#C9DEC9; --deep:#5C8463;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-leaf"></use></svg></span></div>
+    <div class="avatar">
+      <img src="fern.jpg" alt="Placeholder — replace with a fern / forest-floor photo for Fern">
+    </div>
+    <div class="card-body">
+      <h3 class="name">Fern</h3>
+      <p class="role">Keeper of the Understory</p>
+      <p class="bio">Hi, I'm Fern. I tend the quiet undergrowth and know every deer path by heart.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="--light:#D8DAEF; --deep:#6E74A8;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-feather"></use></svg></span></div>
+    <div class="avatar">
+      <img src="wren.jpg" alt="Placeholder — replace with a treetop / canopy bird photo for Wren">
+    </div>
+    <div class="card-body">
+      <h3 class="name">Wren</h3>
+      <p class="role">Voice of the Canopy</p>
+      <p class="bio">Hello! I'm Wren. I trade gossip with the treetops and carry old songs on the wind.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="--light:#C7DCE6; --deep:#4F7E94;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-water"></use></svg></span></div>
+    <div class="avatar">
+      <img src="river.jpg" alt="Placeholder — replace with a flowing river / canyon photo for River">
+    </div>
+    <div class="card-body">
+      <h3 class="name">River</h3>
+      <p class="role">Carver of Stone</p>
+      <p class="bio">Hi, I'm River. I've worn these canyons smooth with nothing but patience and time.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="--light:#BFE3EE; --deep:#4C9FBE;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-cloud-sun"></use></svg></span></div>
+    <div class="avatar">
+      <img src="lark.jpg" alt="Placeholder — replace with an open-sky / clouds photo for Lark">
+    </div>
+    <div class="card-body">
+      <h3 class="name">Lark</h3>
+      <p class="role">Wanderer of Open Sky</p>
+      <p class="bio">Hello! I'm Lark. I rise before the light and chase horizons I never quite reach.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="--light:#DCE7C8; --deep:#84984F;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-seedling"></use></svg></span></div>
+    <div class="avatar">
+      <img src="moss.jpg" alt="Placeholder — replace with a moss / lichen macro photo for Moss">
+    </div>
+    <div class="card-body">
+      <h3 class="name">Moss</h3>
+      <p class="role">Archivist of the Forest Floor</p>
+      <p class="bio">Hi, I'm Moss. I grow slow and low, keeping every footstep the forest forgets.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="--light:#F0D6DC; --deep:#C97E8D;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-spa"></use></svg></span></div>
+    <div class="avatar">
+      <img src="iris.jpg" alt="Placeholder — replace with a wildflower meadow photo for Iris">
+    </div>
+    <div class="card-body">
+      <h3 class="name">Iris</h3>
+      <p class="role">Tender of Wildflowers</p>
+      <p class="bio">Hello! I'm Iris. I borrow color from the light and leave it scattered through the meadow.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="--light:#F3DFB8; --deep:#D9A24D;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-mountain"></use></svg></span></div>
+    <div class="avatar">
+      <img src="sol.jpg" alt="Placeholder — replace with a sunrise / mountain ridge photo for Sol">
+    </div>
+    <div class="card-body">
+      <h3 class="name">Sol</h3>
+      <p class="role">Watcher of the Sunlit Ridge</p>
+      <p class="bio">Hi, I'm Sol. I warm the valley one slope at a time, sunrise to last light.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="--light:#F2C9C2; --deep:#D97561;">
+    <div class="card-head"><span class="badge"><svg><use href="#i-fish"></use></svg></span></div>
+    <div class="avatar">
+      <img src="coral.jpg" alt="Placeholder — replace with a coral reef / ocean photo for Coral">
+    </div>
+    <div class="card-body">
+      <h3 class="name">Coral</h3>
+      <p class="role">Spirit of the Tide</p>
+      <p class="bio">Hello! I'm Coral. I drift with the current, building reefs from salt and patience.</p>
+      <div class="divider"></div>
+      <div class="footer-icons">
+        <svg><use href="#i-leaf"></use></svg><svg><use href="#i-droplet"></use></svg><svg><use href="#i-sun"></use></svg><svg><use href="#i-wind"></use></svg><svg><use href="#i-paw"></use></svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
