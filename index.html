@@ -3,312 +3,336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voices of the Wild — Nature Team Cards</title>
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- Simplified Icons Library (Lucide) -->
-<script src="https://unpkg.com/lucide@latest"></script>
-
+<title>Voices of the Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-  :root{
-    --paper:#F6F3EC;
-    --ink:#3B3A33;
-    --muted:#7A786C;
-    --line:#E6E2D6;
-  }
-  *{ box-sizing:border-box; }
-  body{
-    margin:0;
-    background:var(--paper);
-    font-family:'Jost', sans-serif;
-    color:var(--ink);
-    padding:72px 24px 90px;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #EEEAE0;
+    font-family: 'Jost', sans-serif;
+    padding: 60px 20px 80px;
+    color: #3B3A33;
   }
 
-  .page-head{
-    text-align:center;
-    max-width:520px;
-    margin:0 auto 56px;
+  .page-title {
+    text-align: center;
+    margin-bottom: 48px;
   }
-  .eyebrow{
-    font-size:.72rem;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:#9C9A86;
-    margin:0 0 14px;
-    font-weight:500;
+  .page-title p {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #AAA;
+    margin-bottom: 8px;
   }
-  .page-head h1{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:2.5rem;
-    margin:0 0 14px;
-  }
-  .page-head p{
-    font-size:.95rem;
-    line-height:1.6;
-    color:var(--muted);
-    margin:0;
+  .page-title h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.3rem;
   }
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0,1fr));
-    gap:24px;
-    max-width:880px;
-    margin:0 auto;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
   }
-  @media (max-width:760px){
-    .grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  @media (max-width: 720px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 420px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  @media (max-width:460px){
-    .grid{ grid-template-columns:1fr; }
-    .page-head h1{ font-size:2rem; }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
   }
 
-  .card{
-    background:#fff;
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 10px 26px rgba(58,56,46,0.08);
-    transition:transform .3s ease, box-shadow .3s ease;
-  }
-  @media (prefers-reduced-motion: no-preference){
-    .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 16px 34px rgba(58,56,46,0.14);
-    }
+  /* Coloured top band */
+  .band {
+    height: 88px;
+    background: var(--band);
   }
 
-  .card-head{
-    position:relative;
-    height:80px;
-    background:var(--light);
-  }
-  .badge{
-    position:absolute;
-    top:10px;
-    right:10px;
-    width:26px;
-    height:26px;
-    border-radius:50%;
-    background:var(--deep);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 3px 8px rgba(0,0,0,0.18);
-  }
-  .badge i{ width:14px; height:14px; display:block; }
-
-  .avatar{
-    width:74px;
-    height:74px;
-    border-radius:50%;
-    margin:-37px auto 0;
-    border:4px solid #fff;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    background:var(--light);
-    overflow:hidden;
-  }
-  .avatar img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
+  /* Avatar circle — sits half over the band, half below it */
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    margin: -35px auto 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.13);
+    background: var(--band);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .card-body{
-    padding:12px 18px 22px;
-    text-align:center;
-  }
-  .name{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:1.3rem;
-    margin:10px 0 2px;
-  }
-  .role{
-    font-size:.64rem;
-    letter-spacing:.07em;
-    text-transform:uppercase;
-    color:var(--deep);
-    font-weight:600;
-    margin:0 0 12px;
-  }
-  .bio{
-    font-size:.8rem;
-    line-height:1.55;
-    color:var(--muted);
-    margin:0 0 16px;
-    min-height:58px;
-  }
-  .divider{
-    width:26px;
-    height:1px;
-    background:var(--line);
-    margin:0 auto 14px;
+  /* Default state: show the FA icon */
+  .avatar i {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.85);
   }
 
-  .footer-icons{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    color:#C7C4B5;
-    transition:color .2s ease;
+  /*
+    TO ADD A REAL PHOTO:
+    Replace the <i> tag inside .avatar with:
+      <img src="your-photo.jpg" alt="Name">
+    The styles below will handle the rest automatically.
+  */
+  .avatar img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
-  .footer-icons i{
-    width:15px;
-    height:15px;
-    display:block;
+
+  .body {
+    padding: 14px 16px 20px;
   }
-  .card:hover .footer-icons{
-    color:var(--deep);
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    margin: 10px 0 3px;
+  }
+
+  .role {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .bio {
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: #999;
+    margin-bottom: 14px;
+    min-height: 54px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #eee;
+    width: 30px;
+    margin: 0 auto 12px;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    color: #D4D0C4;
+  }
+  .icons i {
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+  .card:hover .icons i {
+    color: var(--accent);
   }
 </style>
 </head>
 <body>
 
-<div class="page-head">
-  <p class="eyebrow">Meet the Elements</p>
+<div class="page-title">
+  <p>Meet the Elements</p>
   <h1>Voices of the Wild</h1>
-  <p>Eight quiet introductions from the forest, the sky, the stone, and the sea.</p>
 </div>
 
 <div class="grid">
 
-  <!-- Fern -->
-  <div class="card" style="--light:#C9DEC9; --deep:#5C8463;">
-    <div class="card-head"><span class="badge"><i data-lucide="leaf"></i></span></div>
-    <div class="avatar"><img src="fern.jpg" alt="Fern"></div>
-    <div class="card-body">
-      <h3 class="name">Fern</h3>
-      <p class="role">Keeper of the Understory</p>
+  <!-- FERN -->
+  <div class="card" style="--band:#C9DEC9; --accent:#5C8463;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-leaf"></i>
+      <img src="fern.jpg" alt="Fern">
+    </div>
+    <div class="body">
+      <div class="name">Fern</div>
+      <div class="role">Keeper of the Understory</div>
       <p class="bio">Hi, I'm Fern. I tend the quiet undergrowth and know every deer path by heart.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
-  <!-- Wren -->
-  <div class="card" style="--light:#D8DAEF; --deep:#6E74A8;">
-    <div class="card-head"><span class="badge"><i data-lucide="feather"></i></span></div>
-    <div class="avatar"><img src="wren.jpg" alt="Wren"></div>
-    <div class="card-body">
-      <h3 class="name">Wren</h3>
-      <p class="role">Voice of the Canopy</p>
+  <!-- WREN -->
+  <div class="card" style="--band:#D8DAEF; --accent:#6E74A8;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-feather"></i>
+      <img src="wren.jpg" alt="Wren">
+    </div>
+    <div class="body">
+      <div class="name">Wren</div>
+      <div class="role">Voice of the Canopy</div>
       <p class="bio">Hello! I'm Wren. I trade gossip with the treetops and carry old songs on the wind.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
-  <!-- River -->
-  <div class="card" style="--light:#C7DCE6; --deep:#4F7E94;">
-    <div class="card-head"><span class="badge"><i data-lucide="waves"></i></span></div>
-    <div class="avatar"><img src="river.jpg" alt="River"></div>
-    <div class="card-body">
-      <h3 class="name">River</h3>
-      <p class="role">Carver of Stone</p>
+  <!-- RIVER -->
+  <div class="card" style="--band:#C7DCE6; --accent:#4F7E94;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-water"></i>
+      <img src="river.jpg" alt="River"> 
+    </div>
+    <div class="body">
+      <div class="name">River</div>
+      <div class="role">Carver of Stone</div>
       <p class="bio">Hi, I'm River. I've worn these canyons smooth with nothing but patience and time.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
-  <!-- Lark -->
-  <div class="card" style="--light:#BFE3EE; --deep:#4C9FBE;">
-    <div class="card-head"><span class="badge"><i data-lucide="cloud-sun"></i></span></div>
-    <div class="avatar"><img src="lark.jpg" alt="Lark"></div>
-    <div class="card-body">
-      <h3 class="name">Lark</h3>
-      <p class="role">Wanderer of Open Sky</p>
+  <!-- LARK -->
+  <div class="card" style="--band:#BFE3EE; --accent:#4C9FBE;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-cloud-sun"></i>
+      <img src="lark.jpg" alt="Lark">
+    </div>
+    <div class="body">
+      <div class="name">Lark</div>
+      <div class="role">Wanderer of Open Sky</div>
       <p class="bio">Hello! I'm Lark. I rise before the light and chase horizons I never quite reach.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
-  <!-- Moss -->
-  <div class="card" style="--light:#DCE7C8; --deep:#84984F;">
-    <div class="card-head"><span class="badge"><i data-lucide="sprout"></i></span></div>
-    <div class="avatar"><img src="moss.jpg" alt="Moss"></div>
-    <div class="card-body">
-      <h3 class="name">Moss</h3>
-      <p class="role">Archivist of the Forest Floor</p>
+  <!-- MOSS -->
+  <div class="card" style="--band:#DCE7C8; --accent:#84984F;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-seedling"></i>
+      <img src="moss.jpg" alt="Moss">
+    </div>
+    <div class="body">
+      <div class="name">Moss</div>
+      <div class="role">Archivist of the Forest Floor</div>
       <p class="bio">Hi, I'm Moss. I grow slow and low, keeping every footstep the forest forgets.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
-  <!-- Iris -->
-  <div class="card" style="--light:#F0D6DC; --deep:#C97E8D;">
-    <div class="card-head"><span class="badge"><i data-lucide="flower"></i></span></div>
-    <div class="avatar"><img src="iris.jpg" alt="Iris"></div>
-    <div class="card-body">
-      <h3 class="name">Iris</h3>
-      <p class="role">Tender of Wildflowers</p>
+  <!-- IRIS -->
+  <div class="card" style="--band:#F0D6DC; --accent:#C97E8D;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-spa"></i>
+      <img src="iris.jpg" alt="Iris">
+    </div>
+    <div class="body">
+      <div class="name">Iris</div>
+      <div class="role">Tender of Wildflowers</div>
       <p class="bio">Hello! I'm Iris. I borrow color from the light and leave it scattered through the meadow.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
-  <!-- Sol -->
-  <div class="card" style="--light:#F3DFB8; --deep:#D9A24D;">
-    <div class="card-head"><span class="badge"><i data-lucide="mountain"></i></span></div>
-    <div class="avatar"><img src="sol.jpg" alt="Sol"></div>
-    <div class="card-body">
-      <h3 class="name">Sol</h3>
-      <p class="role">Watcher of the Sunlit Ridge</p>
+  <!-- SOL -->
+  <div class="card" style="--band:#F3DFB8; --accent:#D9A24D;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-mountain"></i>
+      <img src="sol.jpg" alt="Sol"> 
+    <div class="body">
+      <div class="name">Sol</div>
+      <div class="role">Watcher of the Sunlit Ridge</div>
       <p class="bio">Hi, I'm Sol. I warm the valley one slope at a time, sunrise to last light.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
-  <!-- Coral -->
-  <div class="card" style="--light:#F2C9C2; --deep:#D97561;">
-    <div class="card-head"><span class="badge"><i data-lucide="fish"></i></span></div>
-    <div class="avatar"><img src="coral.jpg" alt="Coral"></div>
-    <div class="card-body">
-      <h3 class="name">Coral</h3>
-      <p class="role">Spirit of the Tide</p>
+  <!-- CORAL -->
+  <div class="card" style="--band:#F2C9C2; --accent:#D97561;">
+    <div class="band"></div>
+    <div class="avatar">
+      <i class="fa-solid fa-fish"></i>
+      <img src="coral.jpg" alt="Coral"> 
+    </div>
+    <div class="body">
+      <div class="name">Coral</div>
+      <div class="role">Spirit of the Tide</div>
       <p class="bio">Hello! I'm Coral. I drift with the current, building reefs from salt and patience.</p>
-      <div class="divider"></div>
-      <div class="footer-icons">
-        <i data-lucide="leaf"></i><i data-lucide="droplet"></i><i data-lucide="sun"></i><i data-lucide="wind"></i><i data-lucide="footprints"></i>
+      <hr>
+      <div class="icons">
+        <i class="fa-solid fa-leaf"></i>
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-paw"></i>
       </div>
     </div>
   </div>
 
 </div>
-
-<!-- Initializes the Lucide icons script -->
-<script>
-  lucide.createIcons();
-</script>
-
 </body>
 </html>
