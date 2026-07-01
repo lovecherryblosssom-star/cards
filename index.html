@@ -35,14 +35,11 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
     gap: 20px;
     max-width: 860px;
     margin: 0 auto;
   }
-  @media (max-width: 720px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 420px) { .grid { grid-template-columns: 1fr; } }
-
   .card {
     background: #fff;
     border-radius: 16px;
@@ -163,7 +160,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-leaf"></i>
-      <!-- swap icon for photo: <img src="fern.jpg" alt="Fern"> -->
+      <img src="fern.jpg" alt="Fern">
     </div>
     <div class="body">
       <div class="name">Fern</div>
@@ -185,7 +182,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-feather"></i>
-      <!-- swap icon for photo: <img src="wren.jpg" alt="Wren"> -->
+      <img src="wren.jpg" alt="Wren">
     </div>
     <div class="body">
       <div class="name">Wren</div>
@@ -207,7 +204,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-water"></i>
-      <!-- swap icon for photo: <img src="river.jpg" alt="River"> -->
+      <img src="river.jpg" alt="River">
     </div>
     <div class="body">
       <div class="name">River</div>
@@ -229,7 +226,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-cloud-sun"></i>
-      <!-- swap icon for photo: <img src="lark.jpg" alt="Lark"> -->
+      <img src="lark.jpg" alt="Lark">
     </div>
     <div class="body">
       <div class="name">Lark</div>
@@ -251,7 +248,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-seedling"></i>
-      <!-- swap icon for photo: <img src="moss.jpg" alt="Moss"> -->
+      <img src="moss.jpg" alt="Moss">
     </div>
     <div class="body">
       <div class="name">Moss</div>
@@ -273,7 +270,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-spa"></i>
-      <!-- swap icon for photo: <img src="iris.jpg" alt="Iris"> -->
+      <img src="iris.jpg" alt="Iris">
     </div>
     <div class="body">
       <div class="name">Iris</div>
@@ -295,7 +292,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-mountain"></i>
-      <!-- swap icon for photo: <img src="sol.jpg" alt="Sol"> -->
+      <img src="sol.jpg" alt="Sol">
     </div>
     <div class="body">
       <div class="name">Sol</div>
@@ -317,7 +314,7 @@
     <div class="band"></div>
     <div class="avatar">
       <i class="fa-solid fa-fish"></i>
-      <!-- swap icon for photo: <img src="coral.jpg" alt="Coral"> -->
+      <img src="coral.jpg" alt="Coral">
     </div>
     <div class="body">
       <div class="name">Coral</div>
